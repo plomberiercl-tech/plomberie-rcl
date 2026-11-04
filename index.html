@@ -236,6 +236,23 @@
         body { padding-bottom: 76px; }
       }
     </style>
+    <!-- Google Analytics 4 — Plomberie RCL (mesure du site + clics d'appel) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXRGXR5EK1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QXRGXR5EK1');
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[href^="tel:"]');
+        if (link) {
+          gtag('event', 'call_click', {
+            phone_number: link.getAttribute('href').replace('tel:', ''),
+            link_text: (link.textContent || '').trim()
+          });
+        }
+      });
+    </script>
   </head>
   <body>
 
